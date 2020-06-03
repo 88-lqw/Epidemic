@@ -1,0 +1,37 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+
+page {
+  font-family: STHeiti;
+  background-color: #fff;
+}
+
+.dataZero {
+  margin: 300rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dataZero text:first-of-type{
+  font-size: 100px;
+}
+.dataNull {
+  width: 100%;
+}
+
+/* 返回顶部 */
+.goTop{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 120rpx;
+  background: #fff;
+  right: 30rpx;
+  border-radius: 50%;
+  padding: 20rpx;
+  box-shadow: 0px 0px 8px #eee;
+}
+/* 缩小nav下border */
+.nav_margin_lf .cu-item{
+  margin: 0 80rpx;
+}

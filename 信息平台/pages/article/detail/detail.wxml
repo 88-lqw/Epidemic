@@ -1,0 +1,57 @@
+<view class="padding-sm bg-white">
+	<!-- 商品标题 -->
+	<view class="text-lg solids-bottom margin-bottom-sm padding-bottom-sm">
+		<view wx:if="{{dataD.isCanEnroll}}" class="cu-tag sm bg-red padding-bottom-xs">报名</view><text class="text-bold"> {{dataD.articleTitle}}</text>
+		<view class="flex justify-between margin-top-xs">
+			<text class="text-gray text-sm">{{dataD.articleSource}}</text>
+			<view class="text-gray text-sm pushlish_time">
+				<text class="cuIcon-attention text-gray margin-lr-xs"></text>{{dataD.browseCount}} 人看过
+				{{dataD.createTime}}发布</view>
+		</view>
+	</view>
+	<view>
+		<image lazy-load mode="widthFix" src="{{dataD.imageSrc}}" style="width:100%"></image>
+		{{dataD.articleContent}}
+		<block wx:if="{{dataD.isCanEnroll}}">
+			<view class="text-bold text-xl text-black0c margin-top-sm">
+				报名时间
+			</view>
+			<view class="stop_time">截止时间：{{dataD.enrollStopTime}}</view>
+		</block>
+	</view>
+</view>
+<!-- 可以报名 -->
+<block wx:if="{{dataD.isCanEnroll}}">
+	<mp-toptips msg="{{error}}" type="error" show="{{showTopTips}}"></mp-toptips>
+	<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+		<!-- 报名 -->
+		<view class="enroll_title text-bold text-xl text-black0c">
+			联系信息
+		</view>
+		<view class="cu-form-group">
+			<view class="title">企业名称</view>
+			<input bindinput="formInputChange" maxlength="50" data-field="companyName" value="{{formData.companyName}}" placeholder="请输入企业名称"></input>
+		</view>
+		<view class="cu-form-group">
+			<view class="title">企业地址</view>
+			<input bindinput="formInputChange" maxlength="200" data-field="companyAddress" value="{{formData.companyAddress}}" placeholder="请输入企业地址"></input>
+		</view>
+		<view class="cu-form-group">
+			<view class="title require" style="margin-right:30rpx">联系人</view>
+			<input bindinput="formInputChange" maxlength="10" data-field="contactName" value="{{formData.contactName}}" placeholder="请输入联系人"></input>
+		</view>
+		<view class="cu-form-group">
+			<view class="title require">联系电话</view>
+			<input bindinput="formInputChange" maxlength="11" data-field="contactNumber" value="{{formData.contactNumber}}" placeholder="请输入联系电话"></input>
+		</view>
+		<view class="cu-form-group">
+			<view class="title require">产品描述</view>
+			<textarea maxlength="200" data-field="productDesc" value="{{formData.productDesc}}" bindinput="formInputChange" placeholder="请输入参展产品介绍"></textarea>
+		</view>
+		<view class="padding flex flex-direction">
+			<button bindtap='submitForm' class="cu-btn bg-main lg">报名参加</button>
+		</view>
+	</mp-form>
+	<!-- 授权 -->
+	<empower showLogin="{{showLogin}}" checkLogin="{{checkLogin}}"></empower>
+</block>

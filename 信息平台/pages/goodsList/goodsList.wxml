@@ -1,0 +1,72 @@
+<!-- 顶部搜索条件 -->
+<view class="search_term">
+	<!-- <view class="{{searchInd==='0'?'text-main':''}}" bindtap="changeSearch" data-ind="0">
+		<picker bindchange="formInputChange" data-field="ppInd" bindcancel="cancelSearch" value="{{ppInd}}" range="{{ppArray}}" range-key="mName">
+			<view class="picker">
+				{{ppArray[ppInd].mName||'厂商'}}
+				<text class="cuIcon-{{searchInd==='0'?'unfold':'fold'}} text-main"></text>
+			</view>
+		</picker>
+	</view> -->
+	<view class="{{searchInd==='0'?'text-main':''}}" bindtap="changeSearch" data-ind="1">
+		<picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" bindcancel="cancelSearch" value="{{classInd}}" range="{{classArrayR}}" range-key="categoryName">
+			<view class="picker">
+				{{classArrayR[1][classInd[1]].categoryName||'类型'}}
+				<text class="cuIcon-{{searchInd==='0'?'unfold':'fold'}} text-main"></text>
+			</view>
+		</picker>
+	</view>
+	<view class="{{searchInd==='1'?'text-main':''}}" bindtap="changeSearch" data-ind="2">
+		<picker mode="multiSelector" bindchange="csMultiPickerChange" bindcolumnchange="csMultiPickerColumnChange" bindcancel="cancelSearch" value="{{csIndex}}" range="{{csMultiArray}}">
+			<view class="picker">
+				{{cityName}}
+				<text class="cuIcon-{{searchInd==='1'?'unfold':'fold'}} text-main"></text>
+			</view>
+		</picker>
+	</view>
+</view>
+<!-- 搜索 -->
+<view class="cu-bar search bg-white margin-bottom-xs">
+	<!-- <view class="cu-avatar" style="background-image:url(https://dior-ali.oss-cn-shenzhen.aliyuncs.com/dior/bwdLogo.png);"></view> -->
+	<view class="search-form round">
+		<text class="cuIcon-search"></text>
+		<input type="text" value="{{searchText}}" placeholder="搜索防疫品名称、厂家..." bindinput="searchInput" bindconfirm="searchGoods" confirm-type="search"></input>
+		<text hidden="{{!searchText}}" class="cuIcon-roundclose text-main search_close" catchtap="searchClose"></text>
+	</view>
+	<view class="action">
+		<button class="cu-btn bg-main shadow-blur round" bindtap="searchGoods">搜索</button>
+		<!-- <picker mode="multiSelector" bindchange="csMultiPickerChange" bindcolumnchange="csMultiPickerColumnChange" value="{{csIndex}}" range="{{csMultiArray}}">
+			<view class="picker">{{cityName}}</view>
+		</picker>
+		<text class="cuIcon-triangledownfill"></text> -->
+	</view>
+</view>
+<!-- 信息分类 -->
+<scroll-view scroll-x class="bg-white nav nav_margin_lf">
+	<view class="flex text-center">
+		<!-- <view class="cu-item flex-sub {{item.cid==TabCur?'text-main cur':''}}" wx:for="{{classArray}}" wx:key="cid" bindtap="tabSelect" data-id="{{item.cid}}">
+			{{item.categoryName}}
+		</view> -->
+		<view class="cu-item flex-sub {{TabCur === '0'?'text-main cur':''}}" bindtap="tabSelect" data-id="0">防疫供应</view>
+		<view class="cu-item flex-sub {{TabCur === '1'?'text-main cur':''}}" bindtap="tabSelect" data-id="1">防疫采购</view>
+	</view>
+</scroll-view>
+<!-- 信息列表 -->
+<view class="home_goods ">
+	<!-- 信息 -->
+	<supply wx:if="{{TabCur === '0'}}" class="padding-sm" style="width:100%" goodsList="{{goodsList}}" />
+	<purchase wx:if="{{TabCur === '1'}}" goodsList="{{goodsList}}" />
+	<!-- 数据为空 -->
+	<view wx:if="{{goodsList.length === 0}}" class="dataZero">
+		<text class="cuIcon-discover text-xxl text-main"></text>
+		<text class="text">暂无信息</text>
+	</view>
+	<!-- 数据到底 -->
+	<view hidden="{{!dataNull}}" class="dataNull cu-load text-black0c over"></view>
+</view>
+<!-- 返回顶部 -->
+<image src='/images/top.png' class='goTop shadow' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+<!-- 发布按钮 -->
+<view catchtap="goPublish" class="goods_publish flex justify-center">
+	<button class="cu-btn cuIcon-add round bg-white shadow text-main" bindtap='goto'></button>
+</view>

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mine": "/pages/mine/mine",
+    "message": "/pages/message/message",
+    "article": "/pages/article/article",
+    "home": "/pages/home/home"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 20
+}

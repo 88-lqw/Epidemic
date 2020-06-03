@@ -1,0 +1,58 @@
+<!-- 信息分类 -->
+<scroll-view scroll-x class="bg-white nav">
+	<view class="flex text-center">
+		<view class="cu-item flex-sub {{TabCur === 'all'?'text-main cur':''}}" bindtap="tabSelect" data-id="all">全部</view>
+		<view class="cu-item flex-sub {{TabCur === '0'?'text-main cur':''}}" bindtap="tabSelect" data-id="0">未付款</view>
+		<view class="cu-item flex-sub {{TabCur === '1'?'text-main cur':''}}" bindtap="tabSelect" data-id="1">已购买</view>
+		<view class="cu-item flex-sub {{TabCur === '-1'?'text-main cur':''}}" bindtap="tabSelect" data-id="-1">已取消</view>
+	</view>
+</scroll-view>
+<!-- 信息列表 -->
+<view class="">
+	<view class="order_all">
+		<view class="order" wx:for="{{dataList}}" wx:key='orderId'>
+			<view bindtap="goDetail" data-type="{{item.orderType}}" data-id="{{item.goodsId}}" class="title">
+				<text>{{item.orderId}}</text>
+				<view>
+					<text class="price">{{item.orderStatusChina}}</text>
+					<text class="cuIcon-right text-gray" style="font-size:26rpx"></text>
+				</view>
+			</view>
+			<view class="info_all">
+				<view class="info">
+					<text>信息描述</text>
+					<text>{{item.goodsDesc}}</text>
+				</view>
+				<view class="info">
+					<text>信息类型</text>
+					<text>{{item.orderType?'采购信息':'供应信息'}}</text>
+				</view>
+				<view class="info">
+					<text>信息价格</text>
+					<text>{{item.orderPrice==='0.00'?item.payType:item.orderPrice}}</text>
+				</view>
+				<block wx:if="{{item.orderStatus===1}}">
+					<view class="info">
+						<text>购买时间</text>
+						<text>{{item.payTime}}</text>
+					</view>
+					<view class="info">
+						<text>联系电话</text>
+						<text>{{item.contactNumber}}</text>
+					</view>
+				</block>
+			</view>
+			<view class="btn_all">
+				<button catchtap="goDetail" data-type="{{item.orderType}}" data-id="{{item.goodsId}}" class="cu-btn round line-blue sm margin-right-sm">查看详情</button>
+				<button wx:if="{{item.orderStatus===0}}" catchtap="anewPay" data-item="{{item}}" class="cu-btn round line-green sm margin-right-xs">支付</button>
+			</view>
+		</view>
+	</view>
+	<!-- 数据为空 -->
+	<view wx:if="{{goodsList.length === 0}}" class="dataZero">
+		<text class="cuIcon-discover text-xxl text-main"></text>
+		<text class="text">暂无信息</text>
+	</view>
+	<!-- 数据到底 -->
+	<view hidden="{{!dataNull}}" class="dataNull cu-load text-black0c over"></view>
+</view>

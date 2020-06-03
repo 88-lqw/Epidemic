@@ -1,0 +1,33 @@
+<view class="cu-bar bg-main">
+	<view class="action">
+		<text class="cuIcon-titles text-white"></text>
+		<text class="text-xl text-bold">全球防疫 你我有责</text>
+	</view>
+	<image class="service_logo" src="/images/bwdLogo.png"></image>
+</view>
+<view class="bg-main about_cont">
+	<view class="text-lg text-bold padding-bottom">关于我们</view>
+	<text>保卫队是一支在科研、生产管理、质量检验、销售及市场跟踪、客户服务等各个环节都配备了专业人才的优秀队伍。
+保卫队针对“新型冠状病毒”面向全球商贸及生产企业设立防疫物资平台。没有中间商赚差价，提供真实货源，并有专人鉴定，安全有保障。</text>
+</view>
+<view class='margin-xl bg-second round-xs shadow-lg'>
+	<view class='text-center padding-tb-sm bg-main text-xl text-bold service_title'>保卫队权威认证</view>
+	<view class='text-content padding-lr-xl padding-tb'>
+		<view class='text-center text-df text-bold text-main'>保卫队要求货品源需达到以下标准</view>
+		<view class='margin-tb-lg shadow border-sm service_text'>
+			<image class="" src="/images/bwdLogoSm.png"></image>
+			<text>商家所上传的货品需符合国家药品
+			监督管理总局标准。</text>
+		</view>
+		<view class='margin-tb-lg shadow border-sm service_text'>
+			<image src="/images/bwdLogoSm.png"></image>
+			<text class="service_text_con">
+				<text class="block">生产类商家需具备《医疗器械许可证》及《医疗器械注册证》。</text>
+			<text class="block">销售类商家需具备《二类医疗器械备案凭证》。</text>
+			</text>
+		</view>
+		<view class="flex flex-direction">
+			<button open-type="contact" class="cu-btn bg-main lg">联系客服</button>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,36 @@
+.home_top {
+  position: relative;
+  /* background-image: url('https://hxc-system-public.oss-cn-shenzhen.aliyuncs.com/hxc/dior/topBg.jpg'); */
+  background-color: #6FC6C9;
+  background-size: 100% 460rpx;
+  height: 480rpx;
+}
+
+.home_top .home_logo {
+  width: 95px;
+  height: 36px;
+  margin-left: 10px;
+}
+
+.home_class {
+  flex-direction: column;
+}
+
+.home_class image {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+.home_goods {
+  margin-top: 140rpx;
+  background-color: #F7F7F7;
+  padding: 20rpx 20rpx 0;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+/* 公众号 */
+.official {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+}

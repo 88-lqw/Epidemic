@@ -1,0 +1,20 @@
+<!-- 信息分类 -->
+<scroll-view scroll-x class="bg-white nav nav_margin_lf">
+	<view class="flex text-center">
+		<view class="cu-item flex-sub {{TabCur === 'GY'?'text-main cur':''}}" bindtap="tabSelect" data-id="GY">防疫供应</view>
+		<view class="cu-item flex-sub {{TabCur === 'CG'?'text-main cur':''}}" bindtap="tabSelect" data-id="CG">防疫采购</view>
+	</view>
+</scroll-view>
+<!-- 信息列表 -->
+<view class="home_goods">
+	<!-- 信息 -->
+	<supply wx:if="{{TabCur === 'GY'}}" class="padding-sm" style="width:100%" goodsList="{{goodsList}}" self/>
+	<purchase wx:else goodsList="{{goodsList}}" self/>
+	<!-- 数据为空 -->
+	<view wx:if="{{goodsList.length === 0}}" class="dataZero">
+		<text class="cuIcon-discover text-xxl text-main"></text>
+		<text class="text">暂无订单</text>
+	</view>
+	<!-- 数据到底 -->
+	<view hidden="{{!dataNull}}" class="dataNull cu-load text-black0c over"></view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mp-form": "/weui/form/form",
+    "mp-toptips": "/weui/toptips/toptips",
+    "empower": "/components/empower/empower"
+  },
+  "navigationBarTitleText": "资讯详情"
+}

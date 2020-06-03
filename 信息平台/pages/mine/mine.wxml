@@ -1,0 +1,60 @@
+<!-- 个人信息 -->
+<view class="me bg-main">
+	<view class="userinfo">
+		<view class="userinfo-avatar">
+			<open-data type="userAvatarUrl"></open-data>
+		</view>
+		<open-data type="userNickName"></open-data>
+	</view>
+	<image src="https://fy-platform.oss-cn-shenzhen.aliyuncs.com/dior/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+</view>
+<!-- <navigator url="/pages/goodsList/goodsList" class="padding bg-white">
+	<text class="cuIcon-voice bg-main round tips_icon"></text>有{{newGoodsCount}}件产品刚刚发布！点击查看相关信息
+</navigator> -->
+<!-- 功能列表 -->
+<navigator url="/pages/mine/myRelease/myRelease" class="active_container">
+	<image src="/images/mine/release.png"></image>
+	<view class='active_text'>
+		<text>我的发布</text>
+		<text class='active_text_english'>My Release</text>
+	</view>
+	<view class='active_triangle'></view>
+</navigator>
+
+<navigator url="/pages/mine/myOrder/myOrder" class="active_container">
+	<image src="/images/mine/order.png"></image>
+	<view class='active_text'>
+		<text>我的订单</text>
+		<text class='active_text_english'>My Order</text>
+	</view>
+	<view class='active_triangle'></view>
+</navigator>
+
+<navigator url="/pages/mine/myCollection/myCollection" class="active_container">
+	<image src="/images/mine/collect.png"></image>
+	<view class='active_text'>
+		<text>我的收藏</text>
+		<text class='active_text_english'>My Collection</text>
+	</view>
+	<view class='active_triangle'></view>
+</navigator>
+
+<navigator url="/pages/mine/myEnroll/myEnroll" class="active_container">
+	<image src="/images/mine/enroll.png"></image>
+	<view class='active_text'>
+		<text>我的报名</text>
+		<text class='active_text_english'>My Enroll</text>
+	</view>
+	<view class='active_triangle'></view>
+</navigator>
+
+<navigator url="/pages/mine/service/service" class="active_container">
+	<image src="/images/mine/about.png"></image>
+	<view class='active_text'>
+		<text>关于我们</text>
+		<text class='active_text_english'>About Us</text>
+	</view>
+	<view class='active_triangle'></view>
+</navigator>
+<!-- 授权 -->
+<empower showLogin="{{showLogin}}" />

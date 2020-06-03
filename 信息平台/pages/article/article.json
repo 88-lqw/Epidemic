@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "article": "/components/article/article"
+  },
+  "component": true,
+  "navigationBarTitleText": "资讯列表"
+}

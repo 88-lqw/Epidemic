@@ -1,0 +1,29 @@
+<view class="flex flex-wrap">
+	<view bindtap="goDetail" data-id="{{item.infoId}}" data-status="{{item.infoStatus}}" class="purchase_cont" wx:for="{{goodsList}}" wx:key="goodsId">
+		<view wx:if="{{!self}}">
+			<view class="cu-avatar round" style="background-image:url({{item.avatarUrl}});"></view>
+		</view>
+		<view class="purchase_info">
+			<view class="purchase_user">
+				<view class="cu-tag sm bg-red">采购</view> {{item.nickName||'信息编号：'+item.infoId}}
+				<!-- tag标签 -->
+			</view>
+			<view class="purchase_text">
+				<text><text>采购物资：</text>{{item.categoryName}}</text>
+				<text><text>采购数量：</text>{{item.purchaseNum}}</text>
+				<text><text>截止时间：</text>{{item.stopTime}}</text>
+				<text class="margin-tb-xs text-cut2">{{item.purchaseDesc}}</text>
+			</view>
+			<view class="text-sm text-gray flex">
+				<view class="cu-capsule round margin-right-xs">
+					<view class="cu-tag bg-red xs">
+						<text class="cuIcon-location"></text>
+					</view>
+					<view class="cu-tag bg-red xs right">
+						{{item.purchaseShdd}}
+					</view>
+				</view> {{item.browseCount}}次预览
+			</view>
+		</view>
+	</view>
+</view>

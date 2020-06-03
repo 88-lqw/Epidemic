@@ -1,0 +1,56 @@
+page {
+  background-color: #F7F7F7;
+  /* padding-bottom: 0 !important; */
+}
+
+.home_goods {
+  margin-top: 0;
+  border-radius: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 125rpx;
+}
+
+.goods_publish {
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+}
+
+.goods_publish button {
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 80rpx;
+}
+
+/* 搜索条件 */
+.search_term {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+}
+
+.search_term>view {
+  flex: 1;
+  font-size: 26rpx;
+  /* text-align: center; */
+  border-right: 1px solid #eee;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_term .picker {
+  width: 33vw;
+  text-align: center;
+}
+
+.search_term view:last-of-type {
+  border: none;
+}

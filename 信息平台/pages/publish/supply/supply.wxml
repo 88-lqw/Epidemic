@@ -1,0 +1,260 @@
+<mp-toptips msg="{{error}}" type="error" show="{{showTopTips}}"></mp-toptips>
+<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+	<!-- 基本信息 -->
+	<view class="publish_title text-bold text-xl text-black0c">
+		基本信息
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">产品描述</view>
+		<input bindinput="formInputChange" data-field="goodsDesc" value="{{formData.goodsDesc}}" placeholder="请输入产品标题"></input>
+	</view>
+	<!-- <view class="cu-form-group">
+		<view class="title require">品牌厂家</view>
+		<picker bindchange="formInputChange" data-field="ppIndex" value="{{formData.csIndex}}" range="{{ppArray}}" range-key="mName">
+			<view class="picker">
+				{{ppArray[formData.ppIndex].mName||'请选择'}}
+			</view>
+		</picker>
+	</view> -->
+	<view class="cu-form-group">
+		<view class="title">品牌厂家</view>
+		<input bindinput="formInputChange" data-field="manufacturer" value="{{formData.manufacturer}}" placeholder="请输入品牌厂家"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">产品种类</view>
+		<picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{zlIndex}}" range="{{classArrayR}}" range-key="categoryName">
+			<view class="picker">
+				{{classArrayR[0][zlIndex[0]].categoryName}},{{classArrayR[1][zlIndex[1]].categoryName}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">类型/执行标准</view>
+		<picker bindchange="formInputChange" data-field="bzIndex" value="{{formData.bzIndex}}" range="{{bzArray}}">
+			<view class="picker">
+				{{formData.bzIndex?bzArray[formData.bzIndex]:'请选择'}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">价格</view>
+		<input type="number" bindinput="formInputChange" data-field="goodsPrice" value="{{formData.goodsPrice}}" placeholder="请输入"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">包装规格</view>
+		<input bindinput="formInputChange" data-field="goodsBzgg" value="{{formData.goodsBzgg}}" placeholder="每盒50个/一箱2000个"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">日产能</view>
+		<input bindinput="formInputChange" data-field="dailyOutput" value="{{formData.dailyOutput}}" placeholder="请输入"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">箱重</view>
+		<input bindinput="formInputChange" data-field="goodsWeight" value="{{formData.goodsWeight}}" placeholder="重量7.5KG"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">箱规</view>
+		<input bindinput="formInputChange" data-field="goodsSize" value="{{formData.goodsSize}}" placeholder="52*38*36CM"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">净重</view>
+		<input bindinput="formInputChange" data-field="goodsSuttle" value="{{formData.goodsSuttle}}" placeholder="100g"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">联系电话</view>
+		<input disabled bindinput="formInputChange" data-field="contactNumber" value="{{formData.contactNumber}}" placeholder="请通过授权获取手机号"></input>
+		<button wx:if="{{checkLogin}}" bindtap="checkLogin" class="cu-btn bg-green shadow">授权</button>
+		<button wx:else open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber" class="cu-btn bg-green shadow">授权</button>
+	</view>
+	<view class="cu-form-group solid-bot">
+		<view class="title require">微信号</view>
+		<input bindinput="formInputChange" data-field="contactWechat" value="{{formData.contactWechat}}" placeholder="请输入"></input>
+		<button bindtap="copyPhone" class="cu-btn bg-green shadow">手机号</button>
+	</view>
+	<!-- 详细资料 -->
+	<view class="publish_title text-bold text-xl text-black0c">
+		详细资料
+	</view>
+	<!-- 上传商品封面图 -->
+	<!-- <view class="cu-form-group padding-top-sm">
+		<view class="img_list solid-bottom">
+			<view class="title require">商品封面图（包装图）</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.cover}}" class="bg-img" bindtap="showImage" data-url="{{imgList.cover}}">
+					<image src='{{imgList.cover}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="cover">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="cover">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+	</view> -->
+	<view class="cu-form-group padding-top-sm">
+		<view class="img_list">
+			<view class="title require">商品封面</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.cover}}" class="bg-img" bindtap="showImage" data-url="{{imgList.cover}}">
+					<image src='{{imgList.cover}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="cover">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="cover">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+		<view class="img_list">
+			<view class="title title_min">产品合格证</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.cphgz}}" class="bg-img" bindtap="showImage" data-url="{{imgList.cphgz}}">
+					<image src='{{imgList.cphgz}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="cphgz">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="cphgz">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 上传商品图 -->
+	<view class="cu-bar bg-white">
+		<view class="action require">
+			商品图上传
+		</view>
+		<view class="action">
+			{{imgList.goods.length}}/{{imgList.goodsNum}}
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+		<!-- 视频 -->
+			<view wx:if="{{imgList.goodsV}}" class="bg-img" bindtap="showVideo" data-url="{{imgList.goodsV}}">
+				<!-- <image src='{{imgList.cphgz}}' mode='aspectFill'></image> -->
+				<video id="goodsV" style="width:120rpx;height:120rpx" src="{{imgList.goodsV}}"></video>
+				<view class="cu-tag bg-red" catchtap="delImg" data-url="goodsV">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<!-- 图片 -->
+			<view class="bg-img" wx:for="{{imgList.goods}}" wx:key="index" bindtap="showImage" data-url="{{imgList.goods}}" data-index="{{index}}">
+				<image src='{{imgList.goods[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="delImg" data-url="goods" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<!-- 视频上传 -->
+			<view class="solids" bindtap="chooseVideo" data-index="goodsV" wx:if="{{!imgList.goodsV}}">
+				<text class="cuIcon-cameraaddfill"><text class="text-xs block">视频</text></text>
+			</view>
+			<view class="solids" bindtap="MorechooseImage" data-index="goods" data-num="{{imgList.goodsNum}}" wx:if="{{imgList.goods.length<imgList.goodsNum}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">产地</view>
+		<picker mode="multiSelector" bindchange="cdMultiPickerChange" bindcolumnchange="cdMultiPickerColumnChange" value="{{cdIndex}}" range="{{cdMultiArray}}">
+			<view class="picker">{{cdMultiArray[0][cdIndex[0]]}}，{{cdMultiArray[1][cdIndex[1]]}}</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">发货地</view>
+		<picker mode="multiSelector" bindchange="fhMultiPickerChange" bindcolumnchange="fhMultiPickerColumnChange" value="{{fhIndex}}" range="{{fhMultiArray}}">
+			<view class="picker">{{fhMultiArray[0][fhIndex[0]]}}，{{fhMultiArray[1][fhIndex[1]]}}</view>
+		</picker>
+	</view>
+	<!-- 上传图片 -->
+	<view class="cu-form-group padding-top-sm">
+		<view class="img_list">
+			<view class="title">营业执照</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.yyzz}}" class="bg-img" bindtap="showImage" data-url="{{imgList.yyzz}}">
+					<image src='{{imgList.yyzz}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="yyzz">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="yyzz">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+		<view class="img_list">
+			<view class="title title_min">医疗器械注册证</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.ylqx}}" class="bg-img" bindtap="showImage" data-url="{{imgList.ylqx}}">
+					<image src='{{imgList.ylqx}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="ylqx">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="ylqx">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="cu-form-group solid-bottom padding-top-sm">
+		<view class="img_list">
+			<view class="title">CE证书</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.cezs}}" class="bg-img" bindtap="showImage" data-url="{{imgList.cezs}}">
+					<image src='{{imgList.cezs}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="cezs">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="cezs">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+		<view class="img_list">
+			<view class="title title_min">FDA证书</view>
+			<view class="grid col-2 grid-square flex-sub">
+				<view wx:if="{{imgList.fdazs}}" class="bg-img" bindtap="showImage" data-url="{{imgList.fdazs}}">
+					<image src='{{imgList.fdazs}}' mode='aspectFill'></image>
+					<view class="cu-tag bg-red" catchtap="delImg" data-url="fdazs">
+						<text class="cuIcon-close"></text>
+					</view>
+				</view>
+				<view wx:else class="solids" bindtap="chooseImage" data-index="fdazs">
+					<text class="cuIcon-cameraadd"></text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 上传检测报告 -->
+	<view class="cu-bar bg-white">
+		<view class="action">
+			检测报告
+		</view>
+		<view class="action">
+			{{imgList.jcbg.length}}/{{imgList.jcbgNum}}
+		</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList.jcbg}}" wx:key="index" bindtap="showImage" data-url="{{imgList.jcbg}}" data-index="{{index}}">
+				<image src='{{imgList.jcbg[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="delImg" data-url="jcbg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="MorechooseImage" data-index="jcbg" data-num="{{imgList.jcbgNum}}" wx:if="{{imgList.jcbg.length<imgList.jcbgNum}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+	<view class="padding flex flex-direction">
+		<button bindtap='submitForm' class="cu-btn bg-main lg">发布</button>
+	</view>
+</mp-form>
+<!-- 授权 -->
+<empower showLogin="{{showLogin}}" showPhone="{{showPhone}}" checkLogin="{{checkLogin}}"></empower>

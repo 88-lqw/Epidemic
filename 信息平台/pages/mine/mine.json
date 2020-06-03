@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "empower": "/components/empower/empower"
+  },
+  "component": true,
+  "navigationBarTitleText": "个人中心"
+}

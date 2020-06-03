@@ -1,0 +1,10 @@
+/* @import '/components/login/login.wxss'; */
+page{
+  padding-bottom: 63px;
+}
+/* 公众号 */
+.official {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+}

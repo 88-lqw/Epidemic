@@ -1,0 +1,27 @@
+<view class="cu-modal {{showLogin||showPhone?'show':''}}">
+	<view class="cu-dialog" style="width:400rpx;position:relative">
+		<view class="me shadow-blur">
+			<view class="userinfo">
+				<!-- <image class="userinfo-avatar" src="/images/logo.png"></image> -->
+				<view class="userinfo-avatar">
+					<open-data type="userAvatarUrl"></open-data>
+				</view>
+				<text>防疫商城</text>
+			</view>
+			<view class="animation-wave">
+				<view class="wave"></view>
+			</view>
+		</view>
+		<!-- 微信授权 -->
+		<button wx:if="{{showLogin}}" open-type="getUserInfo" bindgetuserinfo="bindgetUserInfo" class="choose_view">
+			<view class="text-df padding-lg"> 点此授权微信登录</view>
+		</button>
+		<!-- 微信手机授权 -->
+		<button wx:if="{{showPhone&&showLogin}}" bindtap="checkLogin" class="choose_view">
+			<view class="text-df padding-lg">点此进行手机授权</view>
+		</button>
+		<button wx:if="{{showPhone&&!showLogin}}" open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber" class="choose_view">
+			<view class="text-df padding-lg">点此进行手机授权</view>
+		</button>
+	</view>
+</view>

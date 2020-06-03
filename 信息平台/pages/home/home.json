@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "supply": "/components/supply/supply",
+    "purchase": "/components/purchase/purchase"
+  },
+  "component": true,
+  "navigationBarTitleText": "防疫信息平台"
+}

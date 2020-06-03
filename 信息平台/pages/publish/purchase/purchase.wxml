@@ -1,0 +1,101 @@
+<mp-toptips msg="{{error}}" type="error" show="{{showTopTips}}"></mp-toptips>
+<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+	<!-- 基本信息 -->
+	<view class="publish_title text-bold text-xl text-black0c">
+		基本信息
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">产品种类</view>
+		<picker mode="multiSelector" bindchange="MultiChange" bindcolumnchange="MultiColumnChange" value="{{zlIndex}}" range="{{classArrayR}}" range-key="categoryName">
+			<view class="picker">
+				{{classArrayR[0][zlIndex[0]].categoryName}},{{classArrayR[1][zlIndex[1]].categoryName}}
+			</view>
+		</picker>
+	</view>
+	<!-- <view class="cu-form-group">
+		<view class="title require">品牌厂家</view>
+		<picker bindchange="formInputChange" data-field="ppIndex" value="{{formData.csIndex}}" range="{{ppArray}}" range-key="mName">
+			<view class="picker">
+				{{ppArray[formData.ppIndex].mName||'请选择'}}
+			</view>
+		</picker>
+	</view> -->
+	<view class="cu-form-group">
+		<view class="title">品牌厂家</view>
+		<input bindinput="formInputChange" data-field="manufacturer" value="{{formData.manufacturer}}" placeholder="请输入品牌厂家"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">采购数量</view>
+		<input bindinput="formInputChange" data-field="purchaseNum" value="{{formData.purchaseNum}}" placeholder="请输入采购数量"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">截止时间</view>
+		<picker mode="date" data-field="stopTime" value="{{formData.stopTime}}" start="{{startDate}}" bindchange="formInputChange">
+			<view class="picker">
+				{{formData.stopTime||'请选择'}}
+			</view>
+		</picker>
+	</view>
+	<view class="cu-form-group align-start solid-bot-sm">
+		<view class="title require">产品描述</view>
+		<textarea maxlength="258" data-field="purchaseDesc" value="{{formData.purchaseDesc}}" bindinput="formInputChange" placeholder="请输入产品描述"></textarea>
+	</view>
+	<!-- 上传图片 -->
+	<view class="cu-bar bg-white">
+		<view class="action require">
+			图片上传
+		</view>
+		<view class="action">
+			{{imgList.goods.length}}/{{imgList.goodsNum}}
+		</view>
+	</view>
+	<view class="cu-form-group solid-bot">
+		<view class="grid col-4 grid-square flex-sub">
+			<!-- 图片 -->
+			<view class="bg-img" wx:for="{{imgList.goods}}" wx:key="index" bindtap="showImage" data-url="{{imgList.goods}}" data-index="{{index}}">
+				<image src='{{imgList.goods[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="delImg" data-url="goods" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view class="solids" bindtap="MorechooseImage" data-index="goods" data-num="{{imgList.goodsNum}}" wx:if="{{imgList.goods.length<imgList.goodsNum}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+	<!-- 详细资料 -->
+	<view class="publish_title text-bold text-xl text-black0c">
+		联系信息
+	</view>
+	<view class="cu-form-group">
+		<view class="title">采购企业</view>
+		<input bindinput="formInputChange" data-field="purchaseCompany" value="{{formData.purchaseCompany}}" placeholder="请输入公司名称"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">配送地址</view>
+		<picker mode="multiSelector" bindchange="psMultiPickerChange" bindcolumnchange="psMultiPickerColumnChange" value="{{psIndex}}" range="{{psMultiArray}}">
+			<view class="picker">{{psMultiArray[0][psIndex[0]]}}，{{psMultiArray[1][psIndex[1]]}}</view>
+		</picker>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">联系人</view>
+		<input bindinput="formInputChange" data-field="contactName" value="{{formData.contactName}}" placeholder="请输入联系人"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">联系电话</view>
+		<input disabled bindinput="formInputChange" data-field="contactNumber" value="{{formData.contactNumber}}" placeholder="请通过授权获取手机号"></input>
+		<button wx:if="{{checkLogin}}" bindtap="checkLogin" class="cu-btn bg-green shadow">授权</button>
+		<button wx:else open-type="getPhoneNumber" bindgetphonenumber="bindgetphonenumber" class="cu-btn bg-green shadow">授权</button>
+	</view>
+	<view class="cu-form-group">
+		<view class="title require">微信号</view>
+		<input bindinput="formInputChange" data-field="contactWechat" value="{{formData.contactWechat}}" placeholder="请输入"></input>
+		<button bindtap="copyPhone" class="cu-btn bg-green shadow">手机号</button>
+	</view>
+
+	<view class="padding flex flex-direction">
+		<button bindtap='submitForm' class="cu-btn bg-main lg">发布</button>
+	</view>
+</mp-form>
+<!-- 授权 -->
+<empower showLogin="{{showLogin}}" showPhone="{{showPhone}}" checkLogin="{{checkLogin}}"></empower>

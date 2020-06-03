@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "empower":"/components/empower/empower"
+  },
+  "navigationBarTitleText": "防疫供应信息"
+}

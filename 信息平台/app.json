@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/mine/mine",
+    "pages/goodsList/goodsList",
+    "pages/goodsList/user/user",
+    "pages/goodsList/detail/detail",
+    "pages/publish/supply/supply",
+    "pages/publish/purchase/purchase",
+    "pages/mine/service/service",
+    "pages/mine/myRelease/myRelease",
+    "pages/mine/myOrder/myOrder",
+    "pages/mine/myCollection/myCollection",
+    "pages/mine/myEnroll/myEnroll",
+    "pages/message/message",
+    "pages/message/detail/detail",
+    "components/empower/empower",
+    "components/supply/supply",
+    "components/purchase/purchase",
+    "components/article/article",
+    "pages/article/article",
+    "pages/article/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#6FC6C9",
+    "navigationBarTitleText": "防疫信息平台",
+    "navigationBarTextStyle": "white"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wxec7c1b050e044b9a",
+    "wx0b740ce4bb645c5f"
+  ],
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

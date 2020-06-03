@@ -1,0 +1,18 @@
+<view class="cu-card no-card article solid-bottom" wx:for="{{dataList}}" wx:key="articleId" bindtap="goDetail" data-id="{{item.articleId}}">
+	<view class="cu-item shadow">
+		<view class="title flex align-center">
+			<view class="text-cut">
+				<view wx:if="{{item.isCanEnroll}}" class="cu-tag sm bg-red">报名</view> {{item.articleTitle}}
+			</view>
+		</view>
+		<view class="content">
+			<image src="{{item.imageSrc}}" mode="aspectFill"></image>
+			<view class="desc">
+				<view class="text-content">{{item.articleContent}}</view>
+				<view class="text-sm text-gray flex align-center">
+					{{item.articleSource}} <text class="cuIcon-attention text-gray margin-lr-xs"></text>{{item.browseCount}} 人看过
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

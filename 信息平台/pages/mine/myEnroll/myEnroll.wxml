@@ -1,0 +1,37 @@
+<view>
+	<view class="order" wx:for="{{dataList}}" wx:key='orderId'>
+		<view bindtap="goDetail" data-id="{{item.articleId}}" class="title">
+			<text>{{item.logId}}</text>
+			<view>
+				<text class="price">{{item.enrollStatusChina}}</text>
+				<text class="cuIcon-right text-gray" style="font-size:26rpx"></text>
+			</view>
+		</view>
+		<view class="info_all">
+			<view class="info">
+				<text>资讯标题</text>
+				<text>{{item.articleTitle}}</text>
+			</view>
+			<view class="info">
+				<text>企业名称</text>
+				<text>{{item.companyName}}</text>
+			</view>
+			<view class="info">
+				<text>企业地址</text>
+				<text>{{item.companyAddress}}</text>
+			</view>
+			<view class="info">
+				<text>联系人</text>
+				<text>{{item.contactName}}</text>
+			</view>
+			<view class="info">
+				<text>联系电话</text>
+				<text>{{item.contactNumber}}</text>
+			</view>
+			<view class="info">
+				<text>产品描述</text>
+				<text>{{item.productDesc}}</text>
+			</view>
+		</view>
+	</view>
+</view>

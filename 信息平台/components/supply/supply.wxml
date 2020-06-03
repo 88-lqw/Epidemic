@@ -1,0 +1,39 @@
+<view class="flex flex-wrap">
+	<view bindtap="goDetail" data-id="{{item.goodsId}}" data-status="{{item.goodsStatus}}" class="goods_list text-df bg-white text-black0c" wx:for="{{goodsList}}" wx:key="goodsId">
+		<image mode="aspectFill" src="{{item.imageSrc}}"></image>
+		<view class="goode_info">
+			<view class="text-cut2 goods_title">
+				<view class="cu-tag sm bg-red">供应</view>
+				{{item.goodsDesc}}
+			</view>
+			<view class="text-main text-lg text-bold">¥{{item.goodsPrice}}</view>
+			<!-- 卖家信息 -->
+			<view wx:if='{{!self}}' class="goods_seller">
+				<view class="cu-avatar sm radius" style="background-image:url({{item.avatarUrl}});"></view>
+				<text class="margin-left-xs">{{item.nickName}}</text>
+			</view>
+			<view wx:else class="goods_seller">
+				<text class="text-sm text-gray">信息编号：{{item.goodsId}}</text>
+			</view>
+			<!-- tag标签 -->
+			<view class="flex justify-end">
+				<view wx:if="{{item.isAuthentication}}" class="cu-capsule round">
+					<view class="cu-tag bg-blue xs">
+						<text class="cuIcon-safe"></text>
+					</view>
+					<view class="cu-tag bg-blue xs right">
+						认证
+					</view>
+				</view>
+				<view class="cu-capsule round">
+					<view class="cu-tag bg-red xs">
+						<text class="cuIcon-location"></text>
+					</view>
+					<view class="cu-tag bg-red xs right">
+						{{item.goodsFhdd}}
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

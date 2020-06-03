@@ -1,0 +1,60 @@
+<view>
+	<view class="home_top">
+		<!-- 顶部搜索 -->
+		<view class="cu-bar search bg-main">
+			<image class="home_logo" src="/images/bwdLogo.png"></image>
+			<!-- <view class="cu-avatar" style="background-image:url(https://dior-ali.oss-cn-shenzhen.aliyuncs.com/dior/bwdLogo.png);"></view> -->
+			<view class="search-form round">
+				<text class="cuIcon-search"></text>
+				<input type="text" placeholder="搜索信息名称" value="{{searchText}}" bindinput="searchInput" bindconfirm="searchGoods" confirm-type="search"></input>
+				<text hidden="{{!searchText}}" class="cuIcon-roundclose text-main search_close" catchtap="searchClose"></text>
+			</view>
+			<!-- <view class="action text-white">
+				<picker mode="multiSelector" bindchange="csMultiPickerChange" bindcolumnchange="csMultiPickerColumnChange" value="{{csIndex}}" range="{{csMultiArray}}">
+					<view class="picker">{{csMultiArray[1][csIndex[1]]}}</view>
+				</picker>
+				<text class="cuIcon-triangledownfill"></text>
+			</view> -->
+		</view>
+		<!-- 轮播图 -->
+		<swiper class="card-swiper" circular="true" autoplay="false" interval="5000" duration="500" bindchange="cardSwiper">
+			<swiper-item wx:for="{{homeData.banner}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
+				<view class="swiper-item">
+					<image src="{{item.imageSrc}}" mode="aspectFill"></image>
+					<!-- <video src="{{item.imageSrc}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+				</view>
+			</swiper-item>
+		</swiper>
+		<!-- 分类 -->
+		<view class="flex padding justify-around text-df text-black0c">
+			<navigator url="/pages/goodsList/goodsList?cid=0" class="flex home_class align-center">
+				<image src="/images/home/supply.png"></image>
+				供应信息
+			</navigator>
+			<navigator url="/pages/goodsList/goodsList?cid=1" class="flex home_class align-center">
+				<image src="/images/home/purchase.png"></image>
+				采购信息
+			</navigator>
+			<view bindtap="NavChange" data-cur="article" class="flex home_class align-center">
+				<image src="/images/home/information.png"></image>
+				全球物资报名
+			</view>
+			<view bindtap="goBlueT" class="flex home_class align-center">
+				<image src="/images/home/thermodetector.png"></image>
+				蓝牙测温
+			</view>
+		</view>
+	</view>
+	<!-- 信息列表 -->
+	<view class="home_goods">
+		<view class='action flex justify-between align-center'>
+			<text class='cuIcon-titles text-main '> <text class="text-black0c text-lg text-bold">供应信息</text></text>
+		</view>
+		<!-- 供应信息 -->
+		<supply class="padding-sm" style="width:100%" goodsList="{{goodsList}}" />
+		<!-- 数据到底 -->
+		<view hidden="{{!dataNull}}" class="dataNull cu-load text-black0c over"></view>
+	</view>
+</view>
+<!-- 返回顶部 -->
+<image src='/images/top.png' class='goTop shadow' hidden='{{!floorstatus}}' bindtap="goTop"></image>

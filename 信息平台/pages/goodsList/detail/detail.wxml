@@ -1,0 +1,137 @@
+<view class="padding-sm bg-white">
+	<!-- 信息标题 -->
+	<view class="padding-bottom text-lg solids-bottom">
+		<view class="cu-tag sm bg-red">{{infoType?'采购':'供应'}}</view> {{goodsD.goodsDesc||goodsD.purchaseDesc}}
+	</view>
+	<!-- 发布信息 -->
+	<view class="goods_seller padding-tb-sm padding-bottom-sm">
+		<!-- <view class="cu-avatar sm radius" style="background-image:url({{goodsD.avatarUrl}});"></view> -->
+		<image bindtap="goUser" class="cu-avatar sm radius" src="{{goodsD.avatarUrl}}"></image>
+		<text bindtap="goUser" class="margin-left-xs text-lg name_min">{{goodsD.nickName}}</text>
+		<!-- tag标签 -->
+		<view class="flex justify-end padding-lr-sm">
+			<view wx:if="{{goodsD.isAuthentication}}" class="cu-capsule round">
+				<view class="cu-tag bg-blue xs">
+					<text class="cuIcon-safe"></text>
+				</view>
+				<view class="cu-tag bg-blue xs right">
+					认证
+				</view>
+			</view>
+			<view class="cu-capsule round">
+				<view class="cu-tag bg-red xs">
+					<text class="cuIcon-location"></text>
+				</view>
+				<view class="cu-tag bg-red xs right">
+					{{goodsD.goodsFhdd[1]||goodsD.purchaseShdd[1]}}
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 信息价格 -->
+	<view class=" padding-bottom-sm pushlish_con">
+		<view wx:if="{{!infoType}}" class="text-price text-xxl text-bold pushlish_price">{{goodsD.goodsPrice}}<text class="text-xs">起</text></view>
+		<text wx:else class="text-gray text-sm">浏览数：{{goodsD.browseCount}}</text>
+		<text class="text-gray text-sm pushlish_time">{{infoType? goodsD.stopTime+'截止':goodsD.createTime+'发布'}}</text>
+	</view>
+	<!-- 信息详情 -->
+	<view class="goods_info padding-lf-sm margin-tb-sm bg-main text-white">
+		<view class="goods_info_title padding-sm text-bold flex align-center">产品描述 <text class="cuIcon-playfill text-xs padding-left-xs"></text></view>
+		<view class="goods_info_detail padding-sm text-white">
+			<block wx:if="{{!infoType}}">
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">产品种类：{{goodsD.categoryName}}</view>
+					<view class="flex-sub radius">箱规：{{goodsD.goodsSize}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">类型/执行标准：{{goodsD.goodsStandard}}</view>
+					<view class="flex-sub radius">净重：{{goodsD.goodsSuttle}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">联系电话：{{goodsD.contactNumber}}</view>
+					<view class="flex-sub radius">日产能：{{goodsD.dailyOutput}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">微信号：{{goodsD.contactWechat}}</view>
+					<view class="flex-sub radius">箱重：{{goodsD.goodsWeight}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">价格：¥{{goodsD.goodsPrice}}元</view>
+					<view class="flex-sub radius">产地：{{goodsD.goodsOrigin}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">包装规格：{{goodsD.goodsBzgg}}</view>
+					<view class="flex-sub radius">发货地址：{{goodsD.goodsFhdd}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+				</view>
+			</block>
+			<block wx:else>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">采购物资：{{goodsD.categoryName}}</view>
+					<view class="flex-sub radius">地区：{{goodsD.purchaseShdd}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">企业：{{goodsD.purchaseCompany}}</view>
+					<view class="flex-sub radius">联系人：{{goodsD.purchaseNum}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">
+					<view class="flex-twice radius">联系电话：{{goodsD.contactNumber}}</view>
+					<view class="flex-sub radius">微信：{{goodsD.contactWechat}}</view>
+				</view>
+				<view class="flex p-xs margin-bottom-sm mb-sm">截止时间：{{goodsD.stopTime}}</view>
+			</block>
+		</view>
+	</view>
+	<!-- 信息视频 -->
+	<video wx:if="{{goodsD.goodsVideo}}" style="width:100%;" src="{{goodsD.goodsVideo}}"></video>
+	<!-- 信息图片 -->
+	<view wx:for="{{goodsD.goodsImageList}}" wx:for-item="items" wx:key="index">
+		<view class="cu-bar">
+			<view class="action">
+				<text class="cuIcon-titles text-main"></text>
+				<text class="text-xl text-bold">{{items.name}}</text>
+			</view>
+		</view>
+		<image catchtap="showImage" class="goodsImg" wx:for="{{items.imageList}}" wx:key="index" data-index="{{index}}" data-urls="{{items.imageList}}" src="{{item}}" lazy-load mode="widthFix"></image>
+	</view>
+	<image catchtap="showImage" class="goodsImg" wx:for="{{goodsD.purchaseGallery}}" wx:key="index" data-index="{{index}}" data-urls="{{goodsD.purchaseGallery}}" src="{{item}}" lazy-load mode="widthFix"></image>
+</view>
+<!-- 发布者简略信息 -->
+<view bindtap="goUser" class="user_info detail">
+	<image class="cu-avatar lg round" src="{{goodsD.avatarUrl}}"></image>
+	<view class="user_info_text">
+		<text>{{goodsD.nickName}}</text>
+		<text wx:if="{{infoType}}" class="text-gray">已发布{{goodsD.purchaseReleaseCount}}条采购信息</text>
+		<text wx:else class="text-gray">已发布{{goodsD.goodsReleaseCount}}条供应信息</text>
+	</view>
+	<text class="cuIcon-right text-gray" style="font-size:22px"></text>
+</view>
+<!-- 底部操作 -->
+<view class="cu-bar foot bg-white tabbar border shop">
+	<button open-type="share" class="action bg-white">
+		<view class="cuIcon-share"></view>分享
+	</button>
+	<view class="action {{goodsD.isCollect?'text-orange':''}}" catchtap="goodsCollect">
+		<view class="cuIcon-favor{{goodsD.isCollect?'fill text-orange':''}}"></view>{{goodsD.isCollect?'已收藏':'收藏'}}
+	</view>
+	<view class="btn-group" style="height:100%">
+		<button wx:if="{{goodsD.isMaster}}" catchtap="goodsDel" class="cu-btn bg-red round shadow-blur">删除信息</button>
+		<block wx:if="{{goodsD.isBuy}}">
+			<view catchtap="copyNumber" class="pay_btn bg-red shadow-blur">
+				<view>复制微信号</view>
+				<!-- <view>{{goodsD.contactWechat}}</view> -->
+			</view>
+			<view catchtap="callPhone" class="pay_btn bg-red shadow-blur">
+				<view>拨打电话</view>
+				<view>{{goodsD.contactNumber}}</view>
+			</view>
+		</block>
+		<view wx:if="{{!goodsD.isBuy&&!goodsD.isMaster}}" catchtap="goodsPay" class="pay_btn bg-red shadow-blur">
+			<view>付费 ¥ {{goodsD.infoPrice}}元</view>
+			<view>{{goodsD.contactNumber}}</view>
+		</view>
+	</view>
+</view>
+<!-- 授权 -->
+<empower showLogin="{{showLogin}}" showPhone="{{showPhone}}"></empower>

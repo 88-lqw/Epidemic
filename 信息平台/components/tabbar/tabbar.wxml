@@ -1,0 +1,22 @@
+<view class="cu-bar tabbar bg-main shadow foot" style="border-top:2px solid #5FB8BB;">
+	<view class="action {{PageCur=='home'?'text-second':'text-white'}}" bindtap="NavChange" data-cur="home">
+		<view class="cuIcon-home"></view>
+		<view>首页</view>
+	</view>
+	<view class="action {{PageCur=='service'?'text-second':'text-white'}}" bindtap="NavChange" data-cur="service">
+		<view class="cuIcon-service text-white"></view>
+		<view>服务</view>
+	</view>
+	<view bindtap="NavChange" data-cur="publish" class="action text-white add-action">
+		<button class="cu-btn cuIcon-add bg-white shadow text-main" bindtap='goto'></button>
+		发布
+	</view>
+	<view class="action {{PageCur=='message'?'text-second':'text-white'}}" bindtap="NavChange" data-cur="message">
+		<view class="cuIcon-message text-white"></view>
+		<view>信息</view>
+	</view>
+	<view class="action {{PageCur=='mine'?'text-second':'text-white'}}" bindtap="NavChange" data-cur="mine">
+		<view class="cuIcon-my text-white"></view>
+		<view>我的</view>
+	</view>
+</view>

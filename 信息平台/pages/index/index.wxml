@@ -1,0 +1,27 @@
+<home id="home" wx:if="{{PageCur=='home'}}" floorstatus="{{floorstatus}}"></home>
+<mine id="mine" wx:if="{{PageCur=='mine'}}"></mine>
+<message id="message" wx:if="{{PageCur=='message'}}"></message>
+<article id="article" wx:if="{{PageCur=='article'}}"></article>
+<!-- 底部tab -->
+<view class="cu-bar tabbar bg-main shadow foot" style="border-top:2px solid #5FB8BB;">
+	<view class="action text-white" bindtap="NavChange" data-cur="home">
+		<view class="cuIcon-home{{PageCur=='home'?'fill':''}}"></view>
+		<view>首页</view>
+	</view>
+	<view class="action text-white" bindtap="NavChange" data-cur="article">
+		<view class="cuIcon-service{{PageCur=='article'?'fill':''}}"></view>
+		<view>资讯</view>
+	</view>
+	<view bindtap="NavChange" data-cur="publish" class="action text-white add-action">
+		<button class="cu-btn cuIcon-add bg-white shadow text-main" bindtap='goto'></button>
+		发布
+	</view>
+	<view class="action text-white" bindtap="NavChange" data-cur="message">
+		<view class="cuIcon-message{{PageCur=='message'?'fill':''}}"></view>
+		<view>信息</view>
+	</view>
+	<view class="action text-white" bindtap="NavChange" data-cur="mine">
+		<view class="cuIcon-my{{PageCur=='mine'?'fill':''}}"></view>
+		<view>我的</view>
+	</view>
+</view>

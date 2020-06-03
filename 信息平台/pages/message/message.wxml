@@ -1,0 +1,29 @@
+<scroll-view scroll-y bindscrolltolower="getMore" lower-threshold="200" class="cu-list menu-avatar scroll_list">
+	<view class="cu-bar bg-white solid-bottom">
+		<view class="action">
+			<text class="cuIcon-title text-orange "></text> 信息列表
+		</view>
+	</view>
+	<navigator url="/pages/message/detail/detail?id={{item.msgId}}" class="msg_item" wx:for="{{msgList}}" wx:key="msgId">
+		<image class="round-sm " src="/images/bwdLogoSm.png"></image>
+		<view class="msg_info">
+			<view class="msg_text padding-xs">
+				<view class="text-main">
+					<text class="text-cut">{{item.msgTitle}}</text>
+				</view>
+				<view class="text-grey text-xs">{{item.createTime}}</view>
+			</view>
+			<view class="action text-gray text-sm flex msg_text padding-lr-xs ">
+				<text class="text-cut">{{item.msgContent}}</text>
+				<view wx:if="{{!item.isRead}}" class="cu-tag round bg-red sm"></view>
+			</view>
+		</view>
+	</navigator>
+	<!-- 数据为空 -->
+	<view wx:if="{{msgList.length === 0}}" class="dataZero">
+		<text class="cuIcon-discover text-xxl text-main"></text>
+		<text class="text">暂无消息</text>
+	</view>
+	<!-- 数据到底 -->
+	<!-- <view hidden="{{!dataNull}}" class="dataNull cu-load text-black0c over"></view> -->
+</scroll-view>

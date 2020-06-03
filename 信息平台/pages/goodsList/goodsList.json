@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "supply": "/components/supply/supply",
+    "purchase": "/components/purchase/purchase"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 20,
+  "navigationBarTitleText": "商品列表"
+}

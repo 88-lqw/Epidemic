@@ -1,0 +1,46 @@
+page {
+  /* background-color: #f1f1f1; */
+  /* padding-bottom: 55px; */
+}
+
+.service_logo {
+  width: 95px;
+  height: 36px;
+  margin-right: 20px;
+}
+
+.about_cont {
+  padding: 30rpx;
+  font-size: 22rpx;
+}
+
+.service_title {
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+}
+
+.service_text {
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+  font-size: 24rpx;
+  color: #000;
+  background-color: #fff;
+}
+
+.service_text image {
+  height: 70rpx;
+  width: 70rpx;
+  margin: -40rpx 30rpx 0 -10rpx;
+}
+
+.service_text>text {
+  flex: 1;
+  padding-right: 70rpx;
+}
+
+.service_text_con {
+  display: flex;
+  flex-direction: colum
+}

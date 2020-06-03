@@ -1,0 +1,94 @@
+page {
+  font-family: STHeiti Light [STXihei];
+  background-color: #F7F7F7;
+}
+
+.goods_seller {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.pushlish_con {
+  display: flex;
+  flex-direction: row;
+}
+
+.pushlish_price {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+
+}
+
+.pushlish_time {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.name_min {
+  min-width: 100rpx;
+}
+
+/* 商品参数 */
+.goods_info {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.goods_info_title {
+  border-bottom: 1px solid #fff;
+}
+
+.goods_info_title>text {
+  font-size: 22rpx !important;
+}
+
+.goods_info_detail {
+  font-size: 22rpx;
+}
+
+.goodsImg {
+  width: 100%;
+}
+
+.play_icon {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 10rpx;
+}
+
+/* 用户简略信息 */
+.user_info {
+  margin: 5px 0 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.user_info_text {
+  margin-left: 20rpx;
+  flex: 1;
+}
+
+.user_info_text text {
+  display: block;
+}
+
+.pay_btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0rpx 20rpx;
+  font-size: 26rpx;
+  height: 100%;
+  justify-content: center;
+}
+
+.pay_btn view {
+  margin: 4rpx 0;
+}

@@ -1,0 +1,48 @@
+/* 用户简略信息 */
+.user_info {
+  margin: 5px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 250rpx;
+  padding: 20rpx;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.background image {
+  width: 100%;
+  height: 250rpx;
+}
+
+.user_head {
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid #fff;
+  margin: 0 26rpx;
+}
+
+.user_info_text {
+  flex: 1;
+  padding: 26rpx 20rpx;
+  background-color: rgb(230, 230, 230);
+  opacity: 0.6;
+  margin-right: 20rpx;
+}
+
+.user_info_text text {
+  display: block;
+  margin: 4rpx 0;
+}
+
+.user_info_text text:last-of-type {
+  color: #666;
+}
